@@ -2,18 +2,13 @@ from django.contrib import admin
 from myblog.models import Category
 from myblog.models import Post
 
+
 class CategoryAdmin(admin.ModelAdmin):
-    inlines = [
-        CategoryInLine,
-    ]
-admin.site.register(Category, CategoryAdmin)
+    inlines = [CategoryInLine]
 
 
 class PostAdmin(admin.ModelAdmin):
-    inlines = [
-        PostInLine,
-    ]
-admin.site.register(Post, PostAdmin)
+    inlines = [PostInLine]
 
 
 class CategoryInLine(CategoryAdmin.TabularInline):
@@ -23,3 +18,5 @@ class CategoryInLine(CategoryAdmin.TabularInline):
 class PostInLine(PostAdmin.TabularInline):
     model = Post
 
+admin.site.register(Post, PostAdmin)
+admin.site.register(Category, CategoryAdmin)
