@@ -10,7 +10,7 @@ from myblog.views import detail_view
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email')
+        fields = ('username', 'email')
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
@@ -48,12 +48,6 @@ router.register(r'categories', CategoryViewSet)
 
 
 urlpatterns = [
-    url(r'^$',
-        list_view,
-        name="blog_index"),
-    url(r'^posts/(?P<post_id>\d+)/$',
-        detail_view,
-        name='blog_detail'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
