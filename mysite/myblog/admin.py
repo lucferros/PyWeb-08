@@ -3,20 +3,14 @@ from myblog.models import Category
 from myblog.models import Post
 
 
+class CategoryInLine(admin.TabularInline):
+    model = Category.posts.through
+
+
 class CategoryAdmin(admin.ModelAdmin):
     inlines = [CategoryInLine]
+    exclude = ('Category', )
 
 
-class PostAdmin(admin.ModelAdmin):
-    inlines = [PostInLine]
-
-
-class CategoryInLine(CategoryAdmin.TabularInline):
-    model = Category
-
-
-class PostInLine(PostAdmin.TabularInline):
-    model = Post
-
-admin.site.register(Post, PostAdmin)
+admin.site.register(Post)
 admin.site.register(Category, CategoryAdmin)
