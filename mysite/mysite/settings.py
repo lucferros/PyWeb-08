@@ -127,8 +127,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/api_auth/'
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/profile/'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
